@@ -1,7 +1,6 @@
-﻿using System;
-
-using Avalonia;
-using Avalonia.ReactiveUI;
+﻿using Avalonia;
+using ReactiveUI.Avalonia;
+using System;
 
 namespace Finances_Avalonia.Desktop;
 

@@ -1,12 +1,28 @@
 <Window xmlns="https://github.com/avaloniaui"
+        xmlns:rxui="http://reactiveui.net"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:Finances_Avalonia.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:app="clr-namespace:Finances_Avalonia.Services"
         xmlns:views="clr-namespace:Finances_Avalonia.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Finances_Avalonia.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Finances_Avalonia">
-        <views:MainView />
+    <StackPanel>
+	    <Button Content="Go Accounts" Command="{Binding GoAccounts}" />
+        <rxui:RoutedViewHost Grid.Row="0" Router="{Binding Router}">
+            <rxui:RoutedViewHost.DefaultContent>
+                <TextBlock Text="Default content"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </rxui:RoutedViewHost.DefaultContent>
+            <rxui:RoutedViewHost.ViewLocator>
+                <!-- See AppViewLocator.cs section below -->
+                <app:AppViewLocator />
+            </rxui:RoutedViewHost.ViewLocator>
+        </rxui:RoutedViewHost>
+        <CheckBox IsChecked="{Binding Test}">Testing</CheckBox>
+    </StackPanel>
 </Window>

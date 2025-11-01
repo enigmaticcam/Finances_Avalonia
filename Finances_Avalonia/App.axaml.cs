@@ -1,7 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-
 using Finances_Avalonia.ViewModels;
 using Finances_Avalonia.Views;
 

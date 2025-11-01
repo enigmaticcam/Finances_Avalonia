@@ -1,8 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.iOS;
-using Avalonia.ReactiveUI;
-
 using Foundation;
+using ReactiveUI.Avalonia;
 
 namespace Finances_Avalonia.iOS;
 
