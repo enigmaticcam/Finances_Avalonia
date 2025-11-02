@@ -10,19 +10,11 @@
         x:Class="Finances_Avalonia.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Finances_Avalonia">
+    <Design.DataContext>
+		<vm:MainViewModel />
+    </Design.DataContext>
     <StackPanel>
 	    <Button Content="Go Accounts" Command="{Binding GoAccounts}" />
-        <rxui:RoutedViewHost Grid.Row="0" Router="{Binding Router}">
-            <rxui:RoutedViewHost.DefaultContent>
-                <TextBlock Text="Default content"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center" />
-            </rxui:RoutedViewHost.DefaultContent>
-            <rxui:RoutedViewHost.ViewLocator>
-                <!-- See AppViewLocator.cs section below -->
-                <app:AppViewLocator />
-            </rxui:RoutedViewHost.ViewLocator>
-        </rxui:RoutedViewHost>
-        <CheckBox IsChecked="{Binding Test}">Testing</CheckBox>
+        <TransitioningContentControl Content="{Binding CurrentPage}" />
     </StackPanel>
 </Window>
