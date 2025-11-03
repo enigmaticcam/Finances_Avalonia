@@ -7,14 +7,39 @@
         xmlns:app="clr-namespace:Finances_Avalonia.Services"
         xmlns:views="clr-namespace:Finances_Avalonia.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Width="1024" Height="600"
         x:Class="Finances_Avalonia.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Finances_Avalonia">
     <Design.DataContext>
 		<vm:MainViewModel />
     </Design.DataContext>
-    <StackPanel>
-	    <Button Content="Go Accounts" Command="{Binding GoAccounts}" />
-        <TransitioningContentControl Content="{Binding CurrentPage}" />
-    </StackPanel>
+    <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="220, *">
+        <Border Grid.Column="0" Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}">
+            <StackPanel Grid.Column="0" HorizontalAlignment="Center" Spacing="12" Width="200">
+	            <Button Command="{Binding GoAccounts}" HorizontalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Assets/Account.ico" Width="22" />
+						<TextBlock>Accounts</TextBlock>
+                    </StackPanel>
+                </Button>
+	            <Button HorizontalAlignment="Stretch">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Assets/Ledger.ico" Width="22" />
+                        <TextBlock>Ledger</TextBlock>
+                    </StackPanel>
+                </Button>
+	            <Button HorizontalAlignment="Stretch">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="/Assets/Budget.ico" Width="22" />
+                        <TextBlock>Budget</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>    
+        </Border>
+        <Border Grid.Column="1" Padding="20">
+            <TransitioningContentControl Grid.Column="1" Content="{Binding CurrentPage}" />
+        </Border>
+    </Grid>
+    
 </Window>

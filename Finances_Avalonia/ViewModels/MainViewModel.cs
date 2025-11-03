@@ -21,5 +21,4 @@ public class MainViewModel : ViewModelBase
     }
 
     public ICommand GoAccounts { get; }
-    public bool Test { get; set; } = true;
 }
