@@ -10,6 +10,7 @@
     </Design.DataContext>
     <StackPanel>
 	    <TextBlock>Account View Model test is successful!</TextBlock>
+        <CheckBox IsChecked="{Binding ShowInactive}">Show Inactive</CheckBox>
     </StackPanel>
   
   

@@ -16,26 +16,32 @@
     </Design.DataContext>
     <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="220, *">
         <Border Grid.Column="0" Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}">
-            <StackPanel Grid.Column="0" HorizontalAlignment="Center" Spacing="12" Width="200">
-	            <Button Command="{Binding GoAccounts}" HorizontalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Assets/Account.ico" Width="30" />
-						<TextBlock Classes="IconButton">Accounts</TextBlock>
-                    </StackPanel>
+            <Grid RowDefinitions="*, 30">
+                <StackPanel Grid.Row="0" HorizontalAlignment="Center" Spacing="12" Width="200">
+	                <Button Command="{Binding GoAccounts}" HorizontalAlignment="Stretch">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{SvgImage /Assets/Account.svg}" Width="30" />
+						    <TextBlock Classes="IconButton" IsVisible="{Binding SideMenuExpanded}">Accounts</TextBlock>
+                        </StackPanel>
+                    </Button>
+	                <Button HorizontalAlignment="Stretch">
+					    <StackPanel Orientation="Horizontal">
+						    <Image Source="{SvgImage /Assets/Ledger.svg}" Width="30" />
+                            <TextBlock Classes="IconButton" IsVisible="{Binding SideMenuExpanded}">Ledger</TextBlock>
+                        </StackPanel>
+                    </Button>
+	                <Button HorizontalAlignment="Stretch">
+					    <StackPanel Orientation="Horizontal">
+						    <Image Source="{SvgImage /Assets/Budget.svg}" Width="30" />
+                            <TextBlock Classes="IconButton" IsVisible="{Binding SideMenuExpanded}">Budget</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <Button Grid.Row="1" Command="{Binding ExpandSideMenu}" HorizontalAlignment="Right">
+				    <Image Source="{SvgImage /Assets/Left-Arrow.svg}" />	
                 </Button>
-	            <Button HorizontalAlignment="Stretch">
-					<StackPanel Orientation="Horizontal">
-						<Image Source="/Assets/Ledger.ico" Width="30" />
-                        <TextBlock Classes="IconButton">Ledger</TextBlock>
-                    </StackPanel>
-                </Button>
-	            <Button HorizontalAlignment="Stretch">
-					<StackPanel Orientation="Horizontal">
-						<Image Source="/Assets/Budget.ico" Width="30" />
-                        <TextBlock Classes="IconButton">Budget</TextBlock>
-                    </StackPanel>
-                </Button>
-            </StackPanel>    
+                
+            </Grid>
         </Border>
         <Border Grid.Column="1" Padding="20">
             <TransitioningContentControl Grid.Column="1" Content="{Binding CurrentPage}" />
