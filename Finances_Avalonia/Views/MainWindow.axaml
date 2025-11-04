@@ -7,7 +7,7 @@
         xmlns:app="clr-namespace:Finances_Avalonia.Services"
         xmlns:views="clr-namespace:Finances_Avalonia.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        Width="1024" Height="600"
+        Width="1536" Height="800"
         x:Class="Finances_Avalonia.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Finances_Avalonia">
@@ -19,20 +19,20 @@
             <StackPanel Grid.Column="0" HorizontalAlignment="Center" Spacing="12" Width="200">
 	            <Button Command="{Binding GoAccounts}" HorizontalAlignment="Stretch">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Assets/Account.ico" Width="22" />
-						<TextBlock>Accounts</TextBlock>
+                        <Image Source="/Assets/Account.ico" Width="30" />
+						<TextBlock Classes="IconButton">Accounts</TextBlock>
                     </StackPanel>
                 </Button>
 	            <Button HorizontalAlignment="Stretch">
 					<StackPanel Orientation="Horizontal">
-						<Image Source="/Assets/Ledger.ico" Width="22" />
-                        <TextBlock>Ledger</TextBlock>
+						<Image Source="/Assets/Ledger.ico" Width="30" />
+                        <TextBlock Classes="IconButton">Ledger</TextBlock>
                     </StackPanel>
                 </Button>
 	            <Button HorizontalAlignment="Stretch">
 					<StackPanel Orientation="Horizontal">
-						<Image Source="/Assets/Budget.ico" Width="22" />
-                        <TextBlock>Budget</TextBlock>
+						<Image Source="/Assets/Budget.ico" Width="30" />
+                        <TextBlock Classes="IconButton">Budget</TextBlock>
                     </StackPanel>
                 </Button>
             </StackPanel>    

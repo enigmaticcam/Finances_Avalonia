@@ -18,4 +18,8 @@
 	  <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryHoverForeground}" />
 	  <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryHoverBackground}" />
     </Style>
+
+    <Style Selector="TextBlock.IconButton">
+		<Setter Property="Padding" Value="10 4 0 0"/>
+    </Style>
 </Styles>
