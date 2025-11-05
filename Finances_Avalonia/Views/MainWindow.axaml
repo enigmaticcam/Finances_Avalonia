@@ -14,10 +14,10 @@
     <Design.DataContext>
 		<vm:MainViewModel />
     </Design.DataContext>
-    <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="220, *">
+    <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="Auto, *">
         <Border Grid.Column="0" Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}">
             <Grid RowDefinitions="*, 30">
-                <StackPanel Grid.Row="0" HorizontalAlignment="Center" Spacing="12" Width="200">
+                <StackPanel Grid.Row="0" HorizontalAlignment="Center" Spacing="12">
 	                <Button Command="{Binding GoAccounts}" HorizontalAlignment="Stretch">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="{SvgImage /Assets/Account.svg}" Width="30" />
@@ -33,12 +33,15 @@
 	                <Button HorizontalAlignment="Stretch">
 					    <StackPanel Orientation="Horizontal">
 						    <Image Source="{SvgImage /Assets/Budget.svg}" Width="30" />
-                            <TextBlock Classes="IconButton" IsVisible="{Binding SideMenuExpanded}">Budget</TextBlock>
+                            <TextBlock Classes="IconButton" IsVisible="{Binding SideMenuExpanded}">Budgets</TextBlock>
                         </StackPanel>
                     </Button>
                 </StackPanel>
-                <Button Grid.Row="1" Command="{Binding ExpandSideMenu}" HorizontalAlignment="Right">
-				    <Image Source="{SvgImage /Assets/Left-Arrow.svg}" />	
+                <Button Grid.Row="1" Command="{Binding ExpandSideMenu}" HorizontalAlignment="Right" IsVisible="{Binding SideMenuExpanded}">
+				    <Image Source="{SvgImage /Assets/Left-Arrow.svg}"  />	
+                </Button>
+                <Button Grid.Row="1" Command="{Binding ExpandSideMenu}" HorizontalAlignment="Right" IsVisible="{Binding !SideMenuExpanded}">
+					<Image Source="{SvgImage /Assets/Right-Arrow.svg}"  />	
                 </Button>
                 
             </Grid>
