@@ -22,4 +22,8 @@
     <Style Selector="TextBlock.IconButton">
 		<Setter Property="Padding" Value="10 4 0 0"/>
     </Style>
+
+    <Style Selector="Button.active /template/ ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource PrimaryActiveBackground}"/>
+    </Style>
 </Styles>

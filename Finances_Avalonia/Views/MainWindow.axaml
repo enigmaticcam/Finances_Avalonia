@@ -18,7 +18,13 @@
         <Border Grid.Column="0" Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}">
             <Grid RowDefinitions="*, 30">
                 <StackPanel Grid.Row="0" HorizontalAlignment="Center" Spacing="12">
-	                <Button Command="{Binding GoAccounts}" HorizontalAlignment="Stretch">
+                    <Button Command="{Binding GoHome}" HorizontalAlignment="Stretch" Classes.active="{Binding HomePageIsActive}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{SvgImage /Assets/Home.svg}" Width="30" />
+						    <TextBlock Classes="IconButton" IsVisible="{Binding SideMenuExpanded}">Home</TextBlock>
+                        </StackPanel>
+                    </Button>
+	                <Button Command="{Binding GoAccounts}" HorizontalAlignment="Stretch" Classes.active="{Binding AccountPageIsActive}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="{SvgImage /Assets/Account.svg}" Width="30" />
 						    <TextBlock Classes="IconButton" IsVisible="{Binding SideMenuExpanded}">Accounts</TextBlock>

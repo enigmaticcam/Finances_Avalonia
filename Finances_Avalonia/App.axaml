@@ -20,6 +20,7 @@
         </LinearGradientBrush>
 		<SolidColorBrush x:Key="PrimaryHoverBackground">#333B5A</SolidColorBrush>
 		<SolidColorBrush x:Key="PrimaryHoverForeground">White</SolidColorBrush>
+		<SolidColorBrush x:Key="PrimaryActiveBackground">#018030</SolidColorBrush>
     </Application.Resources>
     <Application.DataTemplates>
 		<local:ViewLocator/>
