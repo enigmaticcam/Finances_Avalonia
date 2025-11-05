@@ -1,5 +1,6 @@
 ﻿using Finances_Avalonia.ViewModels.Account;
 using ReactiveUI;
+using System.Reactive.Linq;
 using System.Windows.Input;
 
 namespace Finances_Avalonia.ViewModels;
@@ -18,8 +19,12 @@ public class MainViewModel : ViewModelBase
         ExpandSideMenu = ReactiveCommand.Create(
             () => SideMenuExpanded = !SideMenuExpanded
         );
-        //this.WhenAnyValue(x => x.HomePageIsActive)
-        //    .Subscribe(x => notify)
+        _homePageIsActive = this.WhenAnyValue(x => x.CurrentPage)
+            .Select(x => x == _homePage)
+            .ToProperty(this, x => x.HomePageIsActive, scheduler: RxApp.MainThreadScheduler);
+        _accountPageIsActive = this.WhenAnyValue(x => x.CurrentPage)
+            .Select(x => x == _accountPage)
+            .ToProperty(this, x => x.AccountPageIsActive, scheduler: RxApp.MainThreadScheduler);
     }
 
     private const string ButtonActiveClass = "active";
@@ -41,8 +46,11 @@ public class MainViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _sideMenuExpanded, value);
     }
 
-    public bool HomePageIsActive => _currentPage == _homePage;
-    public bool AccountPageIsActive => _currentPage == _accountPage;
+    private ObservableAsPropertyHelper<bool> _homePageIsActive;
+    public bool HomePageIsActive => _homePageIsActive.Value;
+
+    private ObservableAsPropertyHelper<bool> _accountPageIsActive;
+    public bool AccountPageIsActive => _accountPageIsActive.Value;
 
     public ICommand GoAccounts { get; }
     public ICommand GoHome { get; }
