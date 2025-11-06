@@ -1,4 +1,5 @@
-﻿using Finances_Avalonia.ViewModels.Account;
+﻿using Finances_Avalonia.Data;
+using Finances_Avalonia.Factories;
 using ReactiveUI;
 using System.Reactive.Linq;
 using System.Windows.Input;
@@ -7,33 +8,34 @@ namespace Finances_Avalonia.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-    public MainViewModel()
+    public MainViewModel(PageFactory pageFactory)
     {
-        CurrentPage = _homePage;
         GoAccounts = ReactiveCommand.Create(
-            () => CurrentPage = _accountPage
+            () => CurrentPage = pageFactory.GetPageViewModel(enumApplicationPageNames.Account)
         );
         GoHome = ReactiveCommand.Create(
-            () => CurrentPage = _homePage
+            () => CurrentPage = pageFactory.GetPageViewModel(enumApplicationPageNames.Home)
         );
         ExpandSideMenu = ReactiveCommand.Create(
             () => SideMenuExpanded = !SideMenuExpanded
         );
         _homePageIsActive = this.WhenAnyValue(x => x.CurrentPage)
-            .Select(x => x == _homePage)
+            .Select(x => x?.PageName == enumApplicationPageNames.Home)
             .ToProperty(this, x => x.HomePageIsActive, scheduler: RxApp.MainThreadScheduler);
         _accountPageIsActive = this.WhenAnyValue(x => x.CurrentPage)
-            .Select(x => x == _accountPage)
+            .Select(x => x?.PageName == enumApplicationPageNames.Account)
             .ToProperty(this, x => x.AccountPageIsActive, scheduler: RxApp.MainThreadScheduler);
+        _pageFactory = pageFactory;
+
+        GoHome.Execute(null);
     }
 
+    private PageFactory _pageFactory;
     private const string ButtonActiveClass = "active";
     public string Greeting => "Welcome to Avalonia!";
-    private readonly AccountViewModel _accountPage = new();
-    private readonly HomePageViewModel _homePage = new();
 
-    private ViewModelBase? _currentPage;
-    public ViewModelBase? CurrentPage
+    private PageViewModel? _currentPage;
+    public PageViewModel? CurrentPage
     {
         get => _currentPage;
         set => this.RaiseAndSetIfChanged(ref _currentPage, value);
