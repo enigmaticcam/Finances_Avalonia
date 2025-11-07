@@ -6,5 +6,13 @@
              Background="{DynamicResource PrimaryBackground}"
              Foreground="{DynamicResource PrimaryForeground}"
              x:Class="Finances_Avalonia.Views.Options.OptionsView">
-  Welcome to Options!
+  <StackPanel Spacing="15" Margin="15">
+	  <Label Content="Options" />
+      <Button>
+		  <StackPanel Orientation="Horizontal">
+			  <Image Source="{SvgImage /Assets/Refresh.svg}" Width="30" />
+              <TextBlock Classes="IconButton">Refresh Cache</TextBlock>
+          </StackPanel>
+      </Button>
+  </StackPanel>
 </UserControl>
