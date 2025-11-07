@@ -16,4 +16,6 @@ public class AccountViewModel : PageViewModel
         get => _showInactive;
         set => this.RaiseAndSetIfChanged(ref _showInactive, value);
     }
+
+    protected override enumApplicationPageNames PageNameAbstract => enumApplicationPageNames.Account;
 }

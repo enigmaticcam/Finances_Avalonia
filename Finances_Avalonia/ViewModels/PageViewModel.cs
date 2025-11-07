@@ -3,8 +3,14 @@ using ReactiveUI;
 
 namespace Finances_Avalonia.ViewModels;
 
-public class PageViewModel : ViewModelBase
+public abstract class PageViewModel : ViewModelBase
 {
+    public PageViewModel()
+    {
+        _pageName = PageNameAbstract;
+    }
+
+    protected abstract enumApplicationPageNames PageNameAbstract { get; }
     public enumApplicationPageNames _pageName;
     public enumApplicationPageNames PageName
     {

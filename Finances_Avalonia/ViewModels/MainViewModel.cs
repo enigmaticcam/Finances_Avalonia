@@ -8,6 +8,14 @@ namespace Finances_Avalonia.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
+    /// <summary>
+    /// Design-time only constructor
+    /// </summary>
+    public MainViewModel()
+    {
+        CurrentPage = new HomePageViewModel();
+    }
+
     public MainViewModel(PageFactory pageFactory)
     {
         GoAccounts = ReactiveCommand.Create(
@@ -15,6 +23,9 @@ public class MainViewModel : ViewModelBase
         );
         GoHome = ReactiveCommand.Create(
             () => CurrentPage = pageFactory.GetPageViewModel(enumApplicationPageNames.Home)
+        );
+        GoOptions = ReactiveCommand.Create(
+            () => CurrentPage = pageFactory.GetPageViewModel(enumApplicationPageNames.Options)
         );
         ExpandSideMenu = ReactiveCommand.Create(
             () => SideMenuExpanded = !SideMenuExpanded
@@ -25,13 +36,13 @@ public class MainViewModel : ViewModelBase
         _accountPageIsActive = this.WhenAnyValue(x => x.CurrentPage)
             .Select(x => x?.PageName == enumApplicationPageNames.Account)
             .ToProperty(this, x => x.AccountPageIsActive, scheduler: RxApp.MainThreadScheduler);
-        _pageFactory = pageFactory;
+        _optionsPageIsActive = this.WhenAnyValue(x => x.CurrentPage)
+            .Select(x => x?.PageName == enumApplicationPageNames.Options)
+            .ToProperty(this, x => x.OptionsPageIsActive, scheduler: RxApp.MainThreadScheduler);
 
         GoHome.Execute(null);
     }
 
-    private PageFactory _pageFactory;
-    private const string ButtonActiveClass = "active";
     public string Greeting => "Welcome to Avalonia!";
 
     private PageViewModel? _currentPage;
@@ -54,7 +65,11 @@ public class MainViewModel : ViewModelBase
     private ObservableAsPropertyHelper<bool> _accountPageIsActive;
     public bool AccountPageIsActive => _accountPageIsActive.Value;
 
+    private ObservableAsPropertyHelper<bool> _optionsPageIsActive;
+    public bool OptionsPageIsActive => _optionsPageIsActive.Value;
+
     public ICommand GoAccounts { get; }
     public ICommand GoHome { get; }
+    public ICommand GoOptions { get; }
     public ICommand ExpandSideMenu { get; }
 }
