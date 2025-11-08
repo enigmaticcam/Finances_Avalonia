@@ -1,11 +1,14 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Finances_Avalonia.Commands.Account;
+using Finances_Avalonia.Commands.BalanceWindowAccount;
 using Finances_Avalonia.Commands.Options;
 using Finances_Avalonia.Data;
 using Finances_Avalonia.Factories;
 using Finances_Avalonia.Services;
 using Finances_Avalonia.Services.Entities;
+using Finances_Avalonia.Services.Entities.States;
 using Finances_Avalonia.ViewModels;
 using Finances_Avalonia.ViewModels.Account;
 using Finances_Avalonia.ViewModels.Options;
@@ -29,10 +32,14 @@ public partial class App : Application
         {
             options.BaseAddress = new("http://localhost");
         });
-        collection.AddSingleton<IServiceWrapper, ServiceWrapper>();
+        collection.AddSingleton<IAccountGet, AccountGet>();
+        collection.AddSingleton<IAccountState, AccountState>();
+        collection.AddSingleton<IBalanceWindowAccountGet, BalanceWindowAccountGet>();
+        collection.AddSingleton<IBalanceWindowAccountState, BalanceWindowAccountState>();
         collection.AddSingleton<ICacheChange, CacheChange>();
         collection.AddSingleton<IClearCollection, ClearCollection>();
         collection.AddSingleton<IOptionsRefreshCache, OptionsRefreshCache>();
+        collection.AddSingleton<IServiceWrapper, ServiceWrapper>();
 
         collection.AddTransient<AccountViewModel>();
         collection.AddTransient<HomePageViewModel>();
