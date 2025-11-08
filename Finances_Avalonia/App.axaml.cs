@@ -1,8 +1,11 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Finances_Avalonia.Commands.Options;
 using Finances_Avalonia.Data;
 using Finances_Avalonia.Factories;
+using Finances_Avalonia.Services;
+using Finances_Avalonia.Services.Entities;
 using Finances_Avalonia.ViewModels;
 using Finances_Avalonia.ViewModels.Account;
 using Finances_Avalonia.ViewModels.Options;
@@ -22,6 +25,15 @@ public partial class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         var collection = new ServiceCollection();
+        collection.AddHttpClient<IClient, Client>(options =>
+        {
+            options.BaseAddress = new("http://localhost");
+        });
+        collection.AddSingleton<IServiceWrapper, ServiceWrapper>();
+        collection.AddSingleton<ICacheChange, CacheChange>();
+        collection.AddSingleton<IClearCollection, ClearCollection>();
+        collection.AddSingleton<IOptionsRefreshCache, OptionsRefreshCache>();
+
         collection.AddTransient<AccountViewModel>();
         collection.AddTransient<HomePageViewModel>();
         collection.AddTransient<MainViewModel>();
