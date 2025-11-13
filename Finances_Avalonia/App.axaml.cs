@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Metadata;
 using Finances_Avalonia.Commands.Account;
 using Finances_Avalonia.Commands.BalanceWindowAccount;
 using Finances_Avalonia.Commands.Options;
@@ -15,6 +16,8 @@ using Finances_Avalonia.ViewModels.Options;
 using Finances_Avalonia.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+
+[assembly: XmlnsDefinition("https://github.com/avaloniaui", "Finances_Avalonia.Controls")]
 
 namespace Finances_Avalonia;
 

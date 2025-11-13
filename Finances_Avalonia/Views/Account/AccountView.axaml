@@ -9,8 +9,9 @@
 		<vm:AccountViewModel />
     </Design.DataContext>
     <StackPanel>
-	    <TextBlock>Account View Model test is successful!</TextBlock>
+	    <Label Content="Accounts" />
         <CheckBox IsChecked="{Binding ShowInactive}">Show Inactive</CheckBox>
+        
     </StackPanel>
   
   

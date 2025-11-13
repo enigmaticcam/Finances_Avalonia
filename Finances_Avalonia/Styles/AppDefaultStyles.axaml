@@ -8,13 +8,13 @@
   </Design.PreviewWith>
 
   <!-- Add Styles Here -->
-  <Style Selector="Button">
+  <Style Selector=":is(Button)">
       <Setter Property="FontSize" Value="20" />
 	  <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryForeground}" />
 	  <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBackground}" />
   </Style>
 
-    <Style Selector="Button:pointerover /template/ ContentPresenter">
+    <Style Selector=":is(Button):pointerover /template/ ContentPresenter">
 	  <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryHoverForeground}" />
 	  <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryHoverBackground}" />
     </Style>
@@ -23,7 +23,7 @@
 		<Setter Property="Padding" Value="10 4 0 0"/>
     </Style>
 
-    <Style Selector="Button.active /template/ ContentPresenter">
+    <Style Selector=":is(Button).active /template/ ContentPresenter">
 		<Setter Property="Background" Value="{DynamicResource PrimaryActiveBackground}"/>
     </Style>
 </Styles>
