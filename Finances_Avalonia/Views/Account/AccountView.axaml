@@ -9,7 +9,7 @@
 		<vm:AccountViewModel />
     </Design.DataContext>
     <StackPanel>
-	    <Label Content="Accounts" />
+	    <Label Classes="h2" Content="Accounts" />
         <CheckBox IsChecked="{Binding ShowInactive}">Show Inactive</CheckBox>
         
     </StackPanel>

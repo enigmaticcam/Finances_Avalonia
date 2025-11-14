@@ -7,7 +7,7 @@
              Foreground="{DynamicResource PrimaryForeground}"
              x:Class="Finances_Avalonia.Views.Options.OptionsView">
   <StackPanel Spacing="15" Margin="15">
-	  <Label Content="Options" />
+	  <Label Classes="h2" Content="Options" />
       <Button Command="{Binding RefreshCacheCommand}">
 		  <StackPanel Orientation="Horizontal">
 			  <Image Source="{SvgImage /Assets/Refresh.svg}" Width="30" />

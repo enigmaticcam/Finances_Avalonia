@@ -1,22 +1,62 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <Design.PreviewWith>
+    <Design.PreviewWith>
     <Border Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}" Width="200">
-      <!-- Add Controls for Previewer Here -->
-      <Button Content="Hello World" />
+        <StackPanel Spacing="15">
+            <Button Content="Hello World" />
+            <Button Classes="subtle" Content="Hello World" />
+            <Button Classes="outline" Content="Hello World" />
+            <Button Classes="alert" Content="Hello World" />
+        </StackPanel>
     </Border>
-  </Design.PreviewWith>
+    </Design.PreviewWith>
 
-  <!-- Add Styles Here -->
-  <Style Selector=":is(Button)">
-      <Setter Property="FontSize" Value="20" />
-	  <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryForeground}" />
-	  <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBackground}" />
-  </Style>
+    <!-- Add Styles Here -->
+
+    <Style Selector="Label.h2">
+	    <Setter Property="Padding" Value="0"/>
+	    <Setter Property="FontWeight" Value="Black" />
+	    <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <!-- Button Styles -->
+    
+    <!-- Button Styles -->
+    <Style Selector=":is(Button)">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <!-- Normal button-->
+    <Style Selector=":is(Button)">
+	    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryBackground}" />
+        <Setter Property="FontWeight" Value="Bold" />
+	    <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryButtonBackgroundGradient}" />
+    </Style>
+
+    <!-- Alert button-->
+    <Style Selector=":is(Button).alert">
+	    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryBackground}" />
+        <Setter Property="FontWeight" Value="Bold" />
+	    <Setter Property="Background" Value="{DynamicResource ResourceKey=AlertButtonBackgroundGradient}" />
+    </Style>
+
+    <!-- Subtle button-->
+    <Style Selector=":is(Button).subtle">
+	    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryForeground}" />
+	    <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBackground}" />
+    </Style>
+
+    <!-- Outline button-->
+    <Style Selector=":is(Button).outline">
+	    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=OutlineButtonForeground}" />
+	    <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=PrimaryButtonBackgroundGradient}" />
+        <Setter Property="BorderThickness" Value="3" />
+    </Style>
 
     <Style Selector=":is(Button):pointerover /template/ ContentPresenter">
-	  <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryHoverForeground}" />
-	  <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryHoverBackground}" />
+	    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryHoverForeground}" />
+	    <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryHoverBackground}" />
     </Style>
 
     <Style Selector="TextBlock.IconButton">
