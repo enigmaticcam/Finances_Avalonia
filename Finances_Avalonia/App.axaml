@@ -14,7 +14,7 @@
     <Application.Resources>
         <ResourceDictionary x:Key="IconButtonKey">
 			<ResourceDictionary.MergedDictionaries>
-				<MergeResourceInclude Source="/Controls/IconButton.axaml" />
+				<ResourceInclude Source="/Controls/IconButton.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 		<SolidColorBrush x:Key="PrimaryForeground">#CFCFCF</SolidColorBrush>

@@ -1,7 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="using:Finances_Avalonia.Controls"
-                    x:ClassModifier="internal">
+                    xmlns:controls="clr-namespace:Finances_Avalonia.Controls">
   <Design.PreviewWith>
     <Border Padding="20">
       <StackPanel Spacing="20">
