@@ -1,14 +1,31 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-    <Border Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}" Width="200">
-        <StackPanel Spacing="15">
-            <Button Content="Hello World" />
-            <Button Classes="subtle" Content="Hello World" />
-            <Button Classes="outline" Content="Hello World" />
-            <Button Classes="alert" Content="Hello World" />
-        </StackPanel>
-    </Border>
+        <Border Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}" Width="600">
+            <Grid ColumnDefinitions="*,*,*">
+			    <StackPanel Grid.Column="0" Spacing="15">
+                    <Button Content="Hello World" />
+                    <Button Classes="subtle" Content="Hello World" />
+                    <Button Classes="outline" Content="Hello World" />
+                    <Button Classes="alert" Content="Hello World" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Spacing="15">
+				    <CheckBox />
+                    <CheckBox>Unchecked</CheckBox>
+                    <CheckBox IsChecked="true">Checked</CheckBox>
+                    <CheckBox IsThreeState="true" IsChecked="{x:Null}">Indeterminate</CheckBox>
+                    <CheckBox Width="120">Checkbox should wrap its text</CheckBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Spacing="15">
+				    <CheckBox IsEnabled="false" />
+                    <CheckBox IsEnabled="false">Unchecked</CheckBox>
+                    <CheckBox IsEnabled="false" IsChecked="true">Checked</CheckBox>
+                    <CheckBox IsEnabled="false" IsThreeState="true" IsChecked="{x:Null}">Indeterminate</CheckBox>
+                    <CheckBox IsEnabled="false" Width="120">Checkbox should wrap its text</CheckBox>
+                </StackPanel>
+            </Grid>
+        
+        </Border>
     </Design.PreviewWith>
 
     <!-- Add Styles Here -->
@@ -27,7 +44,7 @@
     </Style>
 
     <!-- Normal button-->
-    <Style Selector=":is(Button)">
+    <Style Selector=":is(Button):not(CheckBox)">
 	    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryBackground}" />
         <Setter Property="FontWeight" Value="Bold" />
 	    <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryButtonBackgroundGradient}" />
@@ -65,5 +82,36 @@
 
     <Style Selector=":is(Button).active /template/ ContentPresenter">
 		<Setter Property="Background" Value="{DynamicResource PrimaryActiveBackground}"/>
+    </Style>
+
+    <Style Selector="CheckBox">
+        
+
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryForeground}" />
+        <Setter Property="BorderBrush" Value="Red" />
+
+        <Style Selector="^:indeterminate">
+
+        </Style>
+
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            
+        </Style>
+
+        <Style Selector="^:checked /template/ ContentPresenter#PART_ContentPresenter">
+            
+        </Style>
+
+        <Style Selector="^:unchecked /template/ Border#NormalRectangle">
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryButtonBackgroundGradient}" />
+            <Setter Property="BorderThickness" Value="3" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#NormalRectangle">
+            
+        </Style>
+
+        <Style Selector="^:disabled /template/ Border#NormalRectangle">
+			<Setter Property="BorderBrush" Value="Black" />
+        </Style>
     </Style>
 </Styles>

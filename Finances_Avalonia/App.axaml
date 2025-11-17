@@ -15,8 +15,7 @@
     <Application.Resources>
         <ResourceDictionary x:Key="IconButtonKey">
 			<ResourceDictionary.MergedDictionaries>
-				<MergeResourceInclude Source="Controls/CheckBox.axaml" />
-				<MergeResourceInclude Source="Controls/TestControl.axaml" />
+				
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 		<SolidColorBrush x:Key="PrimaryForeground">#CFCFCF</SolidColorBrush>
@@ -37,6 +36,7 @@
 		<SolidColorBrush x:Key="PrimaryActiveBackground">#018030</SolidColorBrush>
         
 		<SolidColorBrush x:Key="OutlineButtonForeground">#00ffff</SolidColorBrush>
+        
 
         <LinearGradientBrush x:Key="PrimaryButtonBackgroundGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
 			<GradientStop Offset="0" Color="#03751F" />

@@ -10,16 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AvaloniaXaml Remove="Controls\CheckBox.axaml" />
-    <AvaloniaXaml Remove="Controls\TestControl.axaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AvaloniaResource Include="Controls\CheckBox.axaml" />
-    <AvaloniaResource Include="Controls\TestControl.axaml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.3.8" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.8" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.8" />
