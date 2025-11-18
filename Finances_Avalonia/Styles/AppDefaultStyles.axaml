@@ -84,14 +84,13 @@
 		<Setter Property="Background" Value="{DynamicResource PrimaryActiveBackground}"/>
     </Style>
 
+    <!-- CheckBox -->
     <Style Selector="CheckBox">
-        
-
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryForeground}" />
         <Setter Property="BorderBrush" Value="Red" />
 
-        <Style Selector="^:indeterminate">
-
+        <Style Selector="^:indeterminate /template/ Border#NormalRectangle">
+            <Setter Property="Background" Value="{DynamicResource PrimaryHoverBackground}" />
         </Style>
 
         <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -102,16 +101,25 @@
             
         </Style>
 
+        <Style Selector="^:checked /template/ Border#NormalRectangle">
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryButtonBackgroundGradient}" />
+            <Setter Property="Background" Value="{DynamicResource PrimaryButtonBackgroundGradient}" />
+            <Style Selector="^:disabled">
+                <Setter Property="Background" Value="Black" />
+            </Style>
+        </Style>
+
         <Style Selector="^:unchecked /template/ Border#NormalRectangle">
             <Setter Property="BorderBrush" Value="{DynamicResource PrimaryButtonBackgroundGradient}" />
             <Setter Property="BorderThickness" Value="3" />
         </Style>
         <Style Selector="^:pointerover /template/ Border#NormalRectangle">
-            
+            <Setter Property="BorderBrush" Value="{DynamicResource OutlineButtonForeground}" />
         </Style>
 
         <Style Selector="^:disabled /template/ Border#NormalRectangle">
 			<Setter Property="BorderBrush" Value="Black" />
+            
         </Style>
     </Style>
 </Styles>
